@@ -5,7 +5,7 @@ from datetime import datetime
 from pathlib import Path
 
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
-CHANNEL_ID = "-1003882080903"  # 이크에크 채널
+CHANNEL_ID = "-1003882080903"
 SHEETS_URL = "https://script.google.com/macros/s/AKfycbxACB9dj74D6PjCNo_4GHPIdTzoRKc0nmG9Ig5f6au45x0mrhdmRt50u62JADPv2r-O/exec"
 OFFSET_FILE = "callback_offset.json"
 DAILY_LOG = "daily_log.json"
@@ -39,7 +39,6 @@ def answer_callback(callback_id: str):
     }, timeout=5)
 
 def forward_to_channel(item: dict):
-    """이크에크 채널로 포워드"""
     msg = (
         f"❤️ <b>저장된 매물</b>\n"
         f"💴 ¥{item['price']:,}\n"
@@ -54,7 +53,6 @@ def forward_to_channel(item: dict):
     }, timeout=10)
 
 def add_to_sheets(item: dict):
-    """구글 시트에 행 추가"""
     try:
         requests.post(SHEETS_URL, json={
             "price": item["price"],
@@ -105,8 +103,6 @@ def main():
                 entry["liked"] = True
                 liked_count += 1
                 print(f"  ❤️ 저장됨: {entry.get('name', item_id)}")
-
-                # 채널 포워드 + 시트 추가
                 forward_to_channel(entry)
                 add_to_sheets(entry)
 
