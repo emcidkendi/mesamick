@@ -6,7 +6,6 @@ import requests
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import quote
-from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -16,6 +15,8 @@ from selenium.webdriver.support import expected_conditions as EC
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 SEEN_FILE = "seen_items.json"
+DAILY_LOG = "daily_log.json"
+PRICE_MAX = 9000
 
 def load_keywords():
     kw_file = Path("keywords.txt")
@@ -34,6 +35,16 @@ def save_seen(seen: set):
     with open(SEEN_FILE, "w") as f:
         json.dump(list(seen), f)
 
+def load_daily_log():
+    if Path(DAILY_LOG).exists():
+        with open(DAILY_LOG, "r") as f:
+            return json.load(f)
+    return []
+
+def save_daily_log(log: list):
+    with open(DAILY_LOG, "w") as f:
+        json.dump(log, f, ensure_ascii=False)
+
 def make_driver():
     options = Options()
     options.add_argument("--headless")
@@ -47,23 +58,23 @@ def make_driver():
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/120.0.0.0 Safari/537.36"
     )
-    driver = webdriver.Chrome(options=options)
-    return driver
+    return webdriver.Chrome(options=options)
 
 def search_mercari(driver, keyword: str) -> list:
     encoded = quote(keyword)
-    url = f"https://jp.mercari.com/search?keyword={encoded}&status=on_sale&sort=created_time&order=desc"
+    url = (
+        f"https://jp.mercari.com/search?keyword={encoded}"
+        f"&status=on_sale&sort=created_time&order=desc"
+        f"&price_max={PRICE_MAX}"
+    )
     try:
         driver.get(url)
-        # 아이템 셀 로딩 대기
         WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '[data-testid="item-cell"]'))
         )
         time.sleep(1.5)
-
         items = []
         cells = driver.find_elements(By.CSS_SELECTOR, '[data-testid="item-cell"]')
-
         for cell in cells:
             try:
                 link = cell.find_element(By.CSS_SELECTOR, 'a[href*="/item/"]')
@@ -72,56 +83,60 @@ def search_mercari(driver, keyword: str) -> list:
                 if not item_id_match:
                     continue
                 item_id = item_id_match.group(1)
-
-                # aria-label에서 이름과 가격 파싱
-                # 형식: "상품명의 이미지 12,345円 ..."
                 aria = cell.find_element(By.CSS_SELECTOR, '[role="img"]').get_attribute("aria-label") or ""
-                # 가격 추출
                 price_match = re.search(r'(\d[\d,]+)円', aria)
                 price = int(price_match.group(1).replace(",", "")) if price_match else 0
-                # 이름 추출 (가격 앞 부분)
+                if price == 0 or price >= PRICE_MAX:
+                    continue
                 name = re.sub(r'\s*\d[\d,]+円.*$', '', aria).replace("の画像", "").strip()
                 if not name:
                     name = "이름 없음"
-
                 items.append({"id": item_id, "name": name, "price": price})
             except Exception:
                 continue
-
         return items
-
     except Exception as e:
         print(f"  [ERROR] 검색 실패 ({keyword}): {e}")
         return []
 
-def send_telegram(message: str):
+def send_telegram(message: str, item_id: str, item_url: str) -> int:
+    """메시지 전송 + ❤️ 버튼 추가 → 전송된 message_id 반환"""
     if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
-        print("[WARN] 텔레그램 미설정")
         print(message)
-        return
+        return 0
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
     payload = {
         "chat_id": TELEGRAM_CHAT_ID,
         "text": message,
         "parse_mode": "HTML",
         "disable_web_page_preview": False,
+        "reply_markup": {
+            "inline_keyboard": [[
+                {"text": "❤️ 저장", "callback_data": f"save|{item_id}"},
+                {"text": "🔗 보기", "url": item_url}
+            ]]
+        }
     }
     try:
         resp = requests.post(url, json=payload, timeout=10)
         resp.raise_for_status()
+        return resp.json().get("result", {}).get("message_id", 0)
     except Exception as e:
         print(f"[ERROR] 텔레그램 전송 실패: {e}")
+        return 0
 
 def main():
     keywords = load_keywords()
     if not keywords:
-        print("[INFO] keywords.txt 가 비어있거나 없음")
+        print("[INFO] keywords.txt 비어있음")
         return
 
     seen = load_seen()
+    daily_log = load_daily_log()
     new_count = 0
+    today = datetime.now().strftime("%Y-%m-%d")
 
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M')}] 검색 시작 — {len(keywords)}개 키워드")
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M')}] 검색 시작 — {len(keywords)}개 키워드 / 상한 ¥{PRICE_MAX:,}")
 
     driver = make_driver()
     try:
@@ -149,7 +164,19 @@ def main():
                     f"💴 ¥{price:,}\n"
                     f"🔗 <a href='{item_url}'>메루카리 보기</a>"
                 )
-                send_telegram(msg)
+                msg_id = send_telegram(msg, item_id, item_url)
+
+                # 데일리 로그에 저장
+                daily_log.append({
+                    "date": today,
+                    "message_id": msg_id,
+                    "item_id": item_id,
+                    "name": name,
+                    "price": price,
+                    "url": item_url,
+                    "keyword": keyword,
+                    "liked": False
+                })
                 time.sleep(0.3)
 
             time.sleep(2)
@@ -157,6 +184,7 @@ def main():
         driver.quit()
 
     save_seen(seen)
+    save_daily_log(daily_log)
     print(f"[완료] 새 매물 {new_count}개 발견")
 
 if __name__ == "__main__":
