@@ -7,6 +7,7 @@ from pathlib import Path
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
 CHANNEL_ID = "-1003882080903"  # 이크에크 채널
 SHEETS_URL = "https://script.google.com/macros/s/AKfycbxscQ1bE4BOitDfbAY2MPISbxpP3lx_nJsBuZJXCN_h3WYfoIpV0FaFnkvGTR0NAi7F/exec"
+OFFSET_FILE = "callback_offset.json"
 DAILY_LOG = "daily_log.json"
 
 def load_offset():
