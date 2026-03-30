@@ -30,7 +30,8 @@ jobs:
             seen_items.json
             daily_log.json
             callback_offset.json
-          key: samick-data
+          key: samick-data-${{ github.run_id }}
+          restore-keys: samick-data-
       - name: Run scraper
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
@@ -44,7 +45,7 @@ jobs:
             seen_items.json
             daily_log.json
             callback_offset.json
-          key: samick-data
+          key: samick-data-${{ github.run_id }}
 
   check_likes:
     if: github.event.schedule == '*/5 * * * *' || github.event_name == 'workflow_dispatch'
@@ -62,7 +63,8 @@ jobs:
             seen_items.json
             daily_log.json
             callback_offset.json
-          key: samick-data
+          key: samick-data-${{ github.run_id }}
+          restore-keys: samick-data-
       - name: Check likes
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
@@ -75,7 +77,7 @@ jobs:
             seen_items.json
             daily_log.json
             callback_offset.json
-          key: samick-data
+          key: samick-data-${{ github.run_id }}
 
   daily_report:
     if: github.event.schedule == '0 6,12 * * *'
@@ -93,7 +95,8 @@ jobs:
             seen_items.json
             daily_log.json
             callback_offset.json
-          key: samick-data
+          key: samick-data-${{ github.run_id }}
+          restore-keys: samick-data-
       - name: Send daily report
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
@@ -107,4 +110,4 @@ jobs:
             seen_items.json
             daily_log.json
             callback_offset.json
-          key: samick-data
+          key: samick-data-${{ github.run_id }}
