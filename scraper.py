@@ -100,7 +100,6 @@ def search_mercari(driver, keyword: str) -> list:
         return []
 
 def send_telegram(message: str, item_id: str, item_url: str) -> int:
-    """메시지 전송 + ❤️ 버튼 추가 → 전송된 message_id 반환"""
     if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
         print(message)
         return 0
@@ -110,12 +109,6 @@ def send_telegram(message: str, item_id: str, item_url: str) -> int:
         "text": message,
         "parse_mode": "HTML",
         "disable_web_page_preview": False,
-        "reply_markup": {
-            "inline_keyboard": [[
-                {"text": "❤️ 저장", "callback_data": f"save|{item_id}"},
-                {"text": "🔗 보기", "url": item_url}
-            ]]
-        }
     }
     try:
         resp = requests.post(url, json=payload, timeout=10)
