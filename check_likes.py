@@ -1,13 +1,13 @@
 import os
 import json
+import re
 import requests
 from pathlib import Path
 
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
-CHANNEL_ID = "-1003882080903"
+CHANNEL_ID = "-1003882080903"  # 이크에크 채널
 SHEETS_URL = "https://script.google.com/macros/s/AKfycbxscQ1bE4BOitDfbAY2MPISbxpP3lx_nJsBuZJXCN_h3WYfoIpV0FaFnkvGTR0NAi7F/exec"
 OFFSET_FILE = "callback_offset.json"
-DAILY_LOG = "daily_log.json"
 
 def load_offset():
     if Path(OFFSET_FILE).exists():
@@ -19,28 +19,10 @@ def save_offset(offset):
     with open(OFFSET_FILE, "w") as f:
         json.dump({"offset": offset}, f)
 
-def load_daily_log():
-    if Path(DAILY_LOG).exists():
-        with open(DAILY_LOG, "r") as f:
-            return json.load(f)
-    return []
-
-def save_daily_log(log):
-    with open(DAILY_LOG, "w") as f:
-        json.dump(log, f, ensure_ascii=False)
-
-def answer_callback(callback_id):
-    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/answerCallbackQuery"
-    requests.post(url, json={"callback_query_id": callback_id, "text": "❤️ 저장됐어요!", "show_alert": False}, timeout=5)
-
-def forward_to_channel(item):
-    msg = f"❤️ <b>저장된 매물</b>\n💴 ¥{item['price']:,}\n🔗 <a href='{item['url']}'>메루카리 보기</a>"
-    requests.post(f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage", json={"chat_id": CHANNEL_ID, "text": msg, "parse_mode": "HTML"}, timeout=10)
-
-def add_to_sheets(item):
+def add_to_sheets(price, url):
     try:
-        requests.post(SHEETS_URL, json={"price": item["price"], "url": item["url"]}, timeout=10)
-        print(f"  ✅ 시트 추가: ¥{item['price']}")
+        resp = requests.post(SHEETS_URL, json={"price": price, "url": url}, timeout=10)
+        print(f"  ✅ 시트 추가: ¥{price:,} → {resp.status_code}")
     except Exception as e:
         print(f"  [ERROR] 시트 추가 실패: {e}")
 
@@ -48,37 +30,60 @@ def main():
     if not TELEGRAM_TOKEN:
         print("[INFO] 토큰 없음")
         return
+
     offset = load_offset()
+
     try:
-        resp = requests.get(f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates", params={"offset": offset, "timeout": 5}, timeout=10)
+        resp = requests.get(
+            f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates",
+            params={"offset": offset, "timeout": 5},
+            timeout=10
+        )
         updates = resp.json().get("result", [])
     except Exception as e:
-        print(f"[ERROR] {e}")
+        print(f"[ERROR] 업데이트 실패: {e}")
         return
+
     if not updates:
         print("[INFO] 새 업데이트 없음")
         return
-    daily_log = load_daily_log()
-    liked_count = 0
+
+    new_count = 0
+
     for update in updates:
         save_offset(update["update_id"] + 1)
-        cb = update.get("callback_query")
-        if not cb:
+
+        # 이크에크 채널에 새 메시지 감지
+        channel_post = update.get("channel_post")
+        if not channel_post:
             continue
-        data = cb.get("data", "")
-        if not data.startswith("save|"):
+
+        chat_id = str(channel_post.get("chat", {}).get("id", ""))
+        if chat_id != CHANNEL_ID:
             continue
-        item_id = data.split("|")[1]
-        answer_callback(cb["id"])
-        for entry in daily_log:
-            if entry.get("item_id") == item_id and not entry.get("liked"):
-                entry["liked"] = True
-                liked_count += 1
-                print(f"  ❤️ 저장됨: ¥{entry.get('price', 0)}")
-                forward_to_channel(entry)
-                add_to_sheets(entry)
-    save_daily_log(daily_log)
-    print(f"[완료] {liked_count}개 저장됨")
+
+        # 메시지에서 URL과 가격 추출
+        text = channel_post.get("text", "")
+        entities = channel_post.get("entities", [])
+
+        # URL 추출 (text_link 엔티티에서)
+        url = None
+        for entity in entities:
+            if entity.get("type") == "text_link":
+                url = entity.get("url", "")
+                if "mercari" in url:
+                    break
+
+        # 가격 추출 (¥숫자 패턴)
+        price_match = re.search(r'¥([\d,]+)', text)
+        price = int(price_match.group(1).replace(",", "")) if price_match else 0
+
+        if url and price:
+            print(f"  📥 이크에크 새 메시지 감지: ¥{price:,}")
+            add_to_sheets(price, url)
+            new_count += 1
+
+    print(f"[완료] {new_count}개 시트 등록됨")
 
 if __name__ == "__main__":
     main()
