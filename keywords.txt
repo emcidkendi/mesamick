@@ -1,135 +1,372 @@
-# 메루카리 검색 키워드 목록
-# # 으로 시작하는 줄은 무시됨
-# 한 줄에 하나씩
-# 가격 상한: ¥9,000 미만
-
-# ════════════════════════════════
-# 1. 빈티지 브랜드 태그
-# ════════════════════════════════
-スクリーンスターズ tシャツ ビンテージ
-screen stars vintage tシャツ
-フルーツオブザルーム ビンテージ tシャツ
-fruit of the loom vintage tシャツ
-ヘインズ ビーフィー ビンテージ tシャツ
-hanes beefy vintage tシャツ
-ジャイアント USA tシャツ ビンテージ
-giant usa vintage tシャツ
-デルタ tシャツ ビンテージ
-delta vintage tシャツ
-ギルダン ビンテージ tシャツ
-アンビル ビンテージ tシャツ
-anvil vintage tシャツ
-オネイタ tシャツ ビンテージ
-oneita vintage tシャツ
-ブロッカム tシャツ
-brockum tシャツ
-リキッドブルー tシャツ ビンテージ
-liquid blue vintage tシャツ
-ウィンターランド tシャツ
-winterland tシャツ
-ジャージーズ tシャツ ビンテージ
-jerzees vintage tシャツ
-ステッドマン tシャツ ビンテージ
-チャンピオン ビンテージ tシャツ USA製
-アルスタイル tシャツ ビンテージ
-alstyle vintage tシャツ
-
-# ════════════════════════════════
-# 2. 공통 광범위 키워드
-# ════════════════════════════════
-USA製 ビンテージ tシャツ
-アメリカ製 ビンテージ tシャツ
-90s ビンテージ tシャツ USA
-シングルステッチ ビンテージ tシャツ
-single stitch vintage tシャツ
-デッドストック ビンテージ tシャツ
-プロモ tシャツ ビンテージ
-
-# ════════════════════════════════
-# 3. 밀리터리 / recon vintage 계열
-# ════════════════════════════════
-ミリタリー tシャツ ビンテージ
-リコン ビンテージ tシャツ
-recon vintage tシャツ
-アーミー tシャツ ビンテージ
-ネイビー tシャツ ビンテージ
-
-# ════════════════════════════════
-# 4. 비디오게임 / 게임회사 로고
-# ════════════════════════════════
-ゲーム プロモ tシャツ
-プレイステーション tシャツ ビンテージ
-プレステ tシャツ 90s
-セガ ビンテージ tシャツ
-sega vintage tシャツ
-任天堂 tシャツ ビンテージ
-nintendo vintage tシャツ
-エヌ64 tシャツ ビンテージ
-マックスペイン tシャツ
-ダイアブロ tシャツ ビンテージ
-フォールアウト tシャツ ビンテージ
-ブリザード tシャツ ビンテージ
-ロックスター ゲームズ tシャツ
-
-# ════════════════════════════════
-# 5. 페이드 / 데미지 / 찢어진
-# ════════════════════════════════
-フェード ビンテージ tシャツ
-色落ち ビンテージ tシャツ
-ダメージ tシャツ ビンテージ
-ボロ ビンテージ tシャツ
-シミ ビンテージ tシャツ
-
-# ════════════════════════════════
-# 6. 락밴드
-# ════════════════════════════════
-バンドtシャツ ビンテージ USA
-ロック バンド tシャツ ビンテージ
-マリリンマンソン tシャツ ビンテージ
-marilyn manson vintage tシャツ
-ナイン インチ ネイルズ tシャツ
-nine inch nails vintage tシャツ
-レイジ アゲインスト ザ マシーン tシャツ
-rage against the machine vintage tシャツ
-コーン tシャツ ビンテージ
-korn vintage tシャツ
-リンプ ビズキット tシャツ
-limp bizkit vintage tシャツ
-グランジ tシャツ ビンテージ
-
-# ════════════════════════════════
-# 7. 헤비메탈
-# ════════════════════════════════
+# ═══════════════════════════════════════════════
+# 채널1 — 밴드 (다크/메탈/펑크/하드코어)
+# ═══════════════════════════════════════════════
+ 
+# 호러펑크 / 고스
+misfits tシャツ ビンテージ
+ミスフィッツ tシャツ ビンテージ
+danzig tシャツ ビンテージ
+ダンジグ tシャツ
+samhain tシャツ ビンテージ
+wednesday 13 tシャツ ビンテージ
+murderdolls tシャツ ビンテージ
+christian death tシャツ ビンテージ
+bauhaus tシャツ ビンテージ
+sisters of mercy tシャツ
+type o negative tシャツ ビンテージ
+london after midnight tシャツ
+fields of the nephilim tシャツ
+45 grave tシャツ ビンテージ
+my dying bride tシャツ ビンテージ
+paradise lost tシャツ ビンテージ
+theatre of tragedy tシャツ
+anathema tシャツ ビンテージ
+ 
+# 펑크 / 하드코어
+sex pistols tシャツ ビンテージ
+セックスピストルズ tシャツ
+the clash tシャツ ビンテージ
+ザクラッシュ tシャツ
+ramones tシャツ ビンテージ
+ラモーンズ tシャツ
+dead kennedys tシャツ ビンテージ
+デッドケネディーズ tシャツ
+black flag tシャツ ビンテージ
+ブラックフラッグ tシャツ
+circle jerks tシャツ ビンテージ
+minor threat tシャツ ビンテージ
+bad brains tシャツ ビンテージ
+suicidal tendencies tシャツ ビンテージ
+social distortion tシャツ ビンテージ
+dead boys tシャツ ビンテージ
+discharge tシャツ ビンテージ
+exploited tシャツ ビンテージ
+crass tシャツ ビンテージ
+subhumans tシャツ ビンテージ
+gbh tシャツ ビンテージ
+the germs tシャツ ビンテージ
+fear band tシャツ ビンテージ
+adolescents tシャツ ビンテージ
+tsol tシャツ ビンテージ
+descendents tシャツ ビンテージ
+bad religion tシャツ ビンテージ
+nofx tシャツ ビンテージ
+pennywise tシャツ ビンテージ
+rancid tシャツ ビンテージ
+dropkick murphys tシャツ ビンテージ
+flogging molly tシャツ ビンテージ
+gg allin tシャツ ビンテージ
+butthole surfers tシャツ ビンテージ
+dri tシャツ ビンテージ
+agent orange band tシャツ ビンテージ
+uk subs tシャツ ビンテージ
+the distillers tシャツ ビンテージ
+leftover crack tシャツ ビンテージ
+bikini kill tシャツ ビンテージ
+sleater kinney tシャツ ビンテージ
+babes in toyland tシャツ
+ 
+# 인더스트리얼 / EBM
+nine inch nails tシャツ ビンテージ
+ナインインチネイルズ tシャツ
+ministry tシャツ ビンテージ
+ミニストリー tシャツ
+kmfdm tシャツ ビンテージ
+skinny puppy tシャツ ビンテージ
+front 242 tシャツ ビンテージ
+front line assembly tシャツ
+einsturzende neubauten tシャツ
+nitzer ebb tシャツ ビンテージ
+throbbing gristle tシャツ
+wumpscut tシャツ
+whitehouse tシャツ ビンテージ
+ 
+# 스래시메탈
+metallica tシャツ ビンテージ
+メタリカ tシャツ ビンテージ
+slayer tシャツ ビンテージ
+スレイヤー tシャツ
+megadeth tシャツ ビンテージ
+メガデス tシャツ
+anthrax tシャツ ビンテージ
+testament tシャツ ビンテージ
+exodus band tシャツ ビンテージ
+overkill tシャツ ビンテージ
+kreator tシャツ ビンテージ
+destruction band tシャツ ビンテージ
+sodom band tシャツ ビンテージ
+ 
+# 데스메탈
+death band tシャツ ビンテージ
+obituary tシャツ ビンテージ
+cannibal corpse tシャツ ビンテージ
+morbid angel tシャツ ビンテージ
+deicide tシャツ ビンテージ
+suffocation tシャツ ビンテージ
+napalm death tシャツ ビンテージ
+carcass tシャツ ビンテージ
+bolt thrower tシャツ ビンテージ
+entombed tシャツ ビンテージ
+dismember tシャツ ビンテージ
+ 
+# 블랙메탈
+mayhem band tシャツ ビンテージ
+burzum tシャツ ビンテージ
+darkthrone tシャツ ビンテージ
+emperor band tシャツ ビンテージ
+immortal band tシャツ ビンテージ
+gorgoroth tシャツ ビンテージ
+satyricon tシャツ ビンテージ
+cradle of filth tシャツ ビンテージ
+dimmu borgir tシャツ ビンテージ
+ 
+# 그루브/뉴메탈
+pantera tシャツ ビンテージ
+パンテラ tシャツ
+sepultura tシャツ ビンテージ
+machine head band tシャツ ビンテージ
+soulfly tシャツ ビンテージ
+slipknot tシャツ ビンテージ
+スリップノット tシャツ
+korn tシャツ ビンテージ
+コーン tシャツ
+limp bizkit tシャツ ビンテージ
+mudvayne tシャツ ビンテージ
+disturbed tシャツ ビンテージ
+deftones tシャツ ビンテージ
+system of a down tシャツ ビンテージ
+hatebreed tシャツ ビンテージ
+lamb of god tシャツ ビンテージ
+killswitch engage tシャツ ビンテージ
+as i lay dying tシャツ ビンテージ
+trivium tシャツ ビンテージ
+mastodon tシャツ ビンテージ
+converge band tシャツ ビンテージ
+neurosis tシャツ ビンテージ
+isis band tシャツ ビンテージ
+rammstein tシャツ ビンテージ
+ 
+# 도움 광범위 키워드
 ヘビーメタル tシャツ ビンテージ
 デスメタル tシャツ ビンテージ
 ブラックメタル tシャツ ビンテージ
 スラッシュメタル tシャツ ビンテージ
-メタリカ tシャツ ビンテージ
-metallica vintage tシャツ
-スレイヤー tシャツ ビンテージ
-slayer vintage tシャツ
-セパルトゥラ tシャツ ビンテージ
-ツール バンド tシャツ ビンテージ
-tool band vintage tシャツ
-
-# ════════════════════════════════
-# 8. 호러 / 컬트 영화
-# ════════════════════════════════
-ホラー映画 tシャツ ビンテージ
-カルト映画 tシャツ ビンテージ
 ホラーパンク tシャツ ビンテージ
-クリーチャー tシャツ ビンテージ
-existenz tシャツ
-クローネンバーグ tシャツ
-ヘルレイザー tシャツ ビンテージ
-hellraiser vintage tシャツ
-ハロウィン 映画 tシャツ ビンテージ
-wednesday 13 tシャツ
-
-# ════════════════════════════════
-# 9. 90s 쇼크 / 컬트 문화
-# ════════════════════════════════
-ICP tシャツ ビンテージ
-インセイン クラウン ポッシー tシャツ
-オカルト tシャツ ビンテージ
-サタン tシャツ ビンテージ
+バンドtシャツ ビンテージ USA 90s
+# ═══════════════════════════════════════════════
+# 채널2 — 밴드 (힙합/록/팝/레게/R&B)
+# ═══════════════════════════════════════════════
+ 
+# 클래식 록 / 하드록
+led zeppelin tシャツ ビンテージ
+レッドツェッペリン tシャツ
+black sabbath tシャツ ビンテージ
+ブラックサバス tシャツ
+deep purple tシャツ ビンテージ
+alice cooper tシャツ ビンテージ
+aerosmith tシャツ ビンテージ
+エアロスミス tシャツ
+thin lizzy tシャツ ビンテージ
+uriah heep tシャツ ビンテージ
+rainbow band tシャツ ビンテージ
+whitesnake tシャツ ビンテージ
+bad company tシャツ ビンテージ
+boston band tシャツ ビンテージ
+rush band tシャツ ビンテージ
+heart band tシャツ ビンテージ
+lynyrd skynyrd tシャツ ビンテージ
+allman brothers tシャツ ビンテージ
+the rolling stones tシャツ ビンテージ
+ローリングストーンズ tシャツ
+the beatles tシャツ ビンテージ
+ビートルズ tシャツ
+the who tシャツ ビンテージ
+jimi hendrix tシャツ ビンテージ
+ジミヘンドリックス tシャツ
+janis joplin tシャツ ビンテージ
+pink floyd tシャツ ビンテージ
+ピンクフロイド tシャツ
+the doors tシャツ ビンテージ
+grateful dead tシャツ ビンテージ
+グレイトフルデッド tシャツ
+david bowie tシャツ ビンテージ
+デビッドボウイ tシャツ
+iggy pop tシャツ ビンテージ
+lou reed tシャツ ビンテージ
+velvet underground tシャツ ビンテージ
+frank zappa tシャツ ビンテージ
+captain beefheart tシャツ ビンテージ
+fleetwood mac tシャツ ビンテージ
+ 
+# 80s 글램메탈
+iron maiden tシャツ ビンテージ
+アイアンメイデン tシャツ
+judas priest tシャツ ビンテージ
+ozzy osbourne tシャツ ビンテージ
+ac dc tシャツ ビンテージ
+guns n roses tシャツ ビンテージ
+ガンズアンドローゼズ tシャツ
+motley crue tシャツ ビンテージ
+kiss tシャツ ビンテージ バンド
+van halen tシャツ ビンテージ
+def leppard tシャツ ビンテージ
+bon jovi tシャツ ビンテージ
+skid row tシャツ ビンテージ
+poison band tシャツ ビンテージ
+warrant band tシャツ ビンテージ
+ratt tシャツ ビンテージ
+dokken tシャツ ビンテージ
+quiet riot tシャツ ビンテージ
+twisted sister tシャツ ビンテージ
+cinderella band tシャツ ビンテージ
+winger tシャツ ビンテージ
+ 
+# 90s 그런지 / 얼터너티브
+nirvana tシャツ ビンテージ
+ニルヴァーナ tシャツ
+pearl jam tシャツ ビンテージ
+パールジャム tシャツ
+soundgarden tシャツ ビンテージ
+alice in chains tシャツ ビンテージ
+stone temple pilots tシャツ ビンテージ
+smashing pumpkins tシャツ ビンテージ
+rage against the machine tシャツ ビンテージ
+red hot chili peppers tシャツ ビンテージ
+レッドホットチリペッパーズ tシャツ
+marilyn manson tシャツ ビンテージ
+tool band tシャツ ビンテージ
+green day tシャツ ビンテージ
+weezer tシャツ ビンテージ
+sonic youth tシャツ ビンテージ
+pixies tシャツ ビンテージ
+mudhoney tシャツ ビンテージ
+melvins tシャツ ビンテージ
+dinosaur jr tシャツ ビンテージ
+screaming trees tシャツ ビンテージ
+pavement tシャツ ビンテージ
+modest mouse tシャツ ビンテージ
+beck musician tシャツ ビンテージ
+the breeders tシャツ ビンテージ
+ 
+# 2000s 록
+linkin park tシャツ ビンテージ
+リンキンパーク tシャツ
+audioslave tシャツ ビンテージ
+incubus tシャツ ビンテージ
+white stripes tシャツ ビンテージ
+the strokes tシャツ ビンテージ
+interpol tシャツ ビンテージ
+the killers tシャツ ビンテージ
+a perfect circle tシャツ ビンテージ
+ 
+# 뉴웨이브 / 포스트펑크
+the cure tシャツ ビンテージ
+ザキュア tシャツ
+depeche mode tシャツ ビンテージ
+デペッシュモード tシャツ
+new order tシャツ ビンテージ
+joy division tシャツ ビンテージ
+ジョイディヴィジョン tシャツ
+the smiths tシャツ ビンテージ
+ザスミス tシャツ
+morrissey tシャツ ビンテージ
+talking heads tシャツ ビンテージ
+blondie tシャツ ビンテージ
+rem band tシャツ ビンテージ
+radiohead tシャツ ビンテージ
+portishead tシャツ ビンテージ
+massive attack tシャツ ビンテージ
+bjork tシャツ ビンテージ
+king crimson tシャツ ビンテージ
+kraftwerk tシャツ ビンテージ
+ 
+# 80s 힙합
+run dmc tシャツ ビンテージ
+ランDMC tシャツ
+ll cool j tシャツ ビンテージ
+public enemy tシャツ ビンテージ
+nwa tシャツ ビンテージ
+beastie boys tシャツ ビンテージ
+ビースティボーイズ tシャツ
+big daddy kane tシャツ ビンテージ
+rakim tシャツ ビンテージ
+ice-t tシャツ ビンテージ
+krs one tシャツ ビンテージ
+epmd tシャツ ビンテージ
+slick rick tシャツ ビンテージ
+a tribe called quest tシャツ ビンテージ
+de la soul tシャツ ビンテージ
+ 
+# 90s 힙합
+tupac tシャツ ビンテージ
+2pac tシャツ ビンテージ
+トゥーパック tシャツ
+notorious big tシャツ ビンテージ
+biggie smalls tシャツ ビンテージ
+wu tang clan tシャツ ビンテージ
+ウータンクラン tシャツ
+nas tシャツ ビンテージ
+jay-z tシャツ ビンテージ
+snoop dogg tシャツ ビンテージ
+dr dre tシャツ ビンテージ
+ice cube tシャツ ビンテージ
+cypress hill tシャツ ビンテージ
+outkast tシャツ ビンテージ
+fugees tシャツ ビンテージ
+dmx tシャツ ビンテージ
+method man tシャツ ビンテージ
+mobb deep tシャツ ビンテージ
+gang starr tシャツ ビンテージ
+death row records tシャツ ビンテージ
+デスロウレコーズ tシャツ
+bone thugs tシャツ ビンテージ
+naughty by nature tシャツ ビンテージ
+onyx band tシャツ ビンテージ
+redman tシャツ ビンテージ
+j dilla tシャツ ビンテージ
+madlib tシャツ ビンテージ
+ 
+# 2000s 힙합
+eminem tシャツ ビンテージ
+エミネム tシャツ
+lil wayne tシャツ ビンテージ
+kanye west tシャツ ビンテージ
+50 cent tシャツ ビンテージ
+g unit tシャツ ビンテージ
+three 6 mafia tシャツ ビンテージ
+ludacris tシャツ ビンテージ
+lil jon tシャツ ビンテージ
+ja rule tシャツ ビンテージ
+d12 tシャツ ビンテージ
+ 
+# R&B / 소울 / 펑크
+prince tシャツ ビンテージ
+プリンス tシャツ
+michael jackson tシャツ ビンテージ
+マイケルジャクソン tシャツ
+james brown tシャツ ビンテージ
+parliament funkadelic tシャツ
+earth wind fire tシャツ ビンテージ
+rick james tシャツ ビンテージ
+aaliyah tシャツ ビンテージ
+アリーヤ tシャツ
+tlc tシャツ ビンテージ
+destiny's child tシャツ ビンテージ
+ 
+# 레게 / 스카
+bob marley tシャツ ビンテージ
+ボブマーリー tシャツ
+peter tosh tシャツ ビンテージ
+the specials tシャツ ビンテージ
+madness band tシャツ ビンテージ
+sublime tシャツ ビンテージ
+operation ivy tシャツ ビンテージ
+no doubt tシャツ ビンテージ
+ 
+# 컨트리 / 아메리카나
+johnny cash tシャツ ビンテージ
+ジョニーキャッシュ tシャツ
+willie nelson tシャツ ビンテージ
+waylon jennings tシャツ ビンテージ
+merle haggard tシャツ ビンテージ
+hank williams tシャツ ビンテージ
